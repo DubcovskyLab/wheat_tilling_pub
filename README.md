@@ -44,3 +44,10 @@ The tetraploid tilling project homepage can be found [here](http://dubcovskylab.
 
 For archive purposes, we have added our version of the MAPS pipeline used for these analyses.  If you would like to get the current version of MAPS pipeline, please visit the Comai Lab's project page [here](http://comailab.genomecenter.ucdavis.edu/index.php/MAPS).
 
+###Folder Descriptions:
+  * preprocessing: contains scripts to perform read trimming with sickle/scythe/seqqs, mapping trimmed reads, and then duplicate removal with PicardTool's MarkDuplicates to produce BAM files
+  * maps_pipeline: contains programs for processing resulting BAM files with the MAPs pipeline
+  * postprocessing: contains programs for identifying residual heterogeneity, mutations present in multiple individuals, downstream file conversion to VCF, and stats from the results
+  * jbrowse_config: contains custom configuration for displaying VCF mutation information on JBrowse
+
+
