@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-#generate VCF file for snpeff
+#generate VCF file for Ensembl's VEP tool
 #takes mutation file from MAPs (with locus added to it)
-#outputs a VCF file for snpeff
+#outputs a VCF file for Ensembl's VEP tool
 
 #input python modules
 import os, sys
@@ -53,14 +53,9 @@ for line in mut_file:
     hethom = line_split[7]
     sample_id = "%s:%s%s%s" % (line_split[14], line_split[2], line_split[1], line_split[5])
     print line_split
-    #if ("*" in line_split) or ("+" in line_split):
     if ("*" in type_field) or ("+" in type_field):
-        #vcf_indel_file.write(line_split[0] + '\t' + line_split[1] + '\t' + line_split[14] + '\t' + line_split[2] + '\t' + line_split[5] + '\t40\tPass\t' + line_split[6] + '\n')
-        #vcf_indel_file.write(line_split[0] + '\t' + line_split[1] + '\t' + line_split[14] + '\t' + line_split[2] + '\t' + line_split[5] + '\t40\tPass\tseed_avail=' + line_split[6] + '\n')
         vcf_indel_file.write(line_split[0] + '\t' + line_split[1] + '\t' + sample_id + '\t' + line_split[2] + '\t' + line_split[5] + '\t40\tPass\tseed_avail=' + line_split[6] + ';hethom=' + hethom + '\n')
     else:
-        #vcf_file.write(line_split[0] + '\t' + line_split[1] + '\t' + line_split[14] + '\t' + line_split[2] + '\t' + line_split[5] + '\t40\tPass\t' + line_split[6] + '\n')
-        #vcf_file.write(line_split[0] + '\t' + line_split[1] + '\t' + line_split[14] + '\t' + line_split[2] + '\t' + line_split[5] + '\t40\tPass\tseed_avail=' + line_split[6] + '\n')
         vcf_file.write(line_split[0] + '\t' + line_split[1] + '\t' + sample_id + '\t' + line_split[2] + '\t' + line_split[5] + '\t40\tPass\tseed_avail=' + line_split[6] + ';hethom=' + hethom + '\n')
 
 
