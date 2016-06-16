@@ -224,7 +224,7 @@ do
         echo "[map-bwa.sh] processing capture $capture sample Kronos$sample"
         prefix="Kronos"$sample"_"$capture"_bwa_ABUgenome_"$today
 
-        bwaalncmd1="time bwa aln -t 2 -I $REF $FW_READS > $OUT_RESULTS/$prefix.1.sai 2> $OUT_STATS/$prefix.1.log &"
+        bwaalncmd1="time bwa aln -t 2 -n 0.05 -I $REF $FW_READS > $OUT_RESULTS/$prefix.1.sai 2> $OUT_STATS/$prefix.1.log &"
         echo "[map-bwa.sh]: running $bwaalncmd1"
         echoerr $bwaalncmd1
         eval $bwaalncmd1
@@ -241,7 +241,7 @@ do
         echo "[map-bwa.sh] processing capture $capture sample Kronos$sample"
         prefix="Kronos"$sample"_"$capture"_bwa_ABUgenome_"$today
 
-        bwaalncmd2="time bwa aln -t 2 -I $REF $REV_READS > $OUT_RESULTS/$prefix.2.sai 2> $OUT_STATS/$prefix.2.log &"
+        bwaalncmd2="time bwa aln -t 2 -n 0.05 -I $REF $REV_READS > $OUT_RESULTS/$prefix.2.sai 2> $OUT_STATS/$prefix.2.log &"
         echo "[map-bwa.sh]: running $bwaalncmd2"
         echoerr $bwaalncmd2
         eval $bwaalncmd2

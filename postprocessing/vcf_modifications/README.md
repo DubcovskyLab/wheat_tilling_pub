@@ -1,5 +1,5 @@
 Wheat TILLING Project
 ===============
 
-Place holder for description
+A collection of scripts to modify the resulting MAPS VCF file.
 

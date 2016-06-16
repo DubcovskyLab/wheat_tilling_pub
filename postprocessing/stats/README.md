@@ -1,5 +1,5 @@
 Wheat TILLING Project
 ===============
 
-Place holder for description
+Various scripts to generate stats from result files.
 
