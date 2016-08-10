@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/usr/bin/perl
 #########################
 # 39.getContigSets.pl
 
@@ -232,22 +232,35 @@ foreach my $line (<MAPS_IN>)	{
 				}
 			}
 		}
+		#my $testCountr = scalar(keys %altContigHash);
+
 		# Print the line and the alt contigs for each read:
 		if (%altContigHash)	{# Only print if hash has any elements but i think it always will have
 			#print "\n$contigId - Read Id: $n", $line, "\t"; 
 			print "\n", $line, "\t";
 			#print MAPS_OUT $line, "\t";
 			my $contigSet = $line . "\t"; 
-			print CONTIG_SETS $contigId; 
+			print CONTIG_SETS $contigId;
+			my $altContigCountr = 0;
 			foreach my $key (sort keys %altContigHash)	{
+			
+				$altContigCountr++;
 				print $key, ",";
 				#print MAPS_OUT $key, ",";	
 				$contigSet = $contigSet . $key . ",";						
 				print CONTIG_SETS ",", $key; # Still need to uniqify the contig_sets file outside this script
 			}
 			$contigSet =~ s/,$//; # Remove the last comma
-			print MAPS_OUT "$contigSet\n";
-			#print MAPS_OUT "\n";
+			
+			#print "\n \$testCountr: $testCountr";	
+			#print "\n \$altContigCountr: $altContigCountr";	
+			
+			if($altContigCountr > 10)	{# Just restricting the output for the maps output file 
+				print MAPS_OUT $line , "\t", "Highly repetitive, $altContigCountr alternate locations\n";
+			}
+			else	{
+				print MAPS_OUT "$contigSet\n";
+			}
 			print CONTIG_SETS "\n";
 		}
 	}
